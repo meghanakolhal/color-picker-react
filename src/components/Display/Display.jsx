@@ -174,9 +174,7 @@ const Display = () => {
     });
     if (inpClr.startsWith("#")) {
       setPutClr([...putClr, inpClr]);
-      const clr = [...putClr];
-      console.log(clr);
-      setColor(clr.splice(clr.length - 1));
+      setColor(inpClr);
       setInpClr("");
     } else {
       const strname = inpClr.split(" ").join("").toLowerCase();
