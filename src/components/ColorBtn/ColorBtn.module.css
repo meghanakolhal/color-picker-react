@@ -1,0 +1,7 @@
+.clrBtn {
+    width: 4em;
+    height: 4em;
+    border-radius: 10em;
+    margin: 0.5em;
+    cursor: pointer;
+}
