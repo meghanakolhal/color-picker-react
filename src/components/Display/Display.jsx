@@ -1,4 +1,4 @@
-import { useState } from "react";
+ import { useState } from "react";
 import InputClr from "../InputClr/InputClr";
 import Button from "../Button/Button";
 import styles from "./Display.module.css";
@@ -7,6 +7,7 @@ import ClrBtns from "../ClrBtns/ClrBtns";
 const Display = () => {
   const [inpClr, setInpClr] = useState("");
   const [putClr, setPutClr] = useState(["red", "brown", "yellow", ""]);
+  const [color, setColor] = useState("");
   const arrOfClrs = [
     "black",
     "silver",
@@ -159,10 +160,11 @@ const Display = () => {
     "whitesmoke",
     "yellowgreen",
   ];
-  console.log(putClr);
+  // console.log(putClr)
   const clrNameHandler = (str) => {
     setInpClr(str);
   };
+
   const btnClickHandler = () => {
     putClr.map((el) => {
       if (el == inpClr) {
@@ -172,32 +174,30 @@ const Display = () => {
     });
     if (inpClr.startsWith("#")) {
       setPutClr([...putClr, inpClr]);
+      const clr = [...putClr];
+      console.log(clr);
+      setColor(clr.splice(clr.length - 1));
       setInpClr("");
     } else {
       const strname = inpClr.split(" ").join("").toLowerCase();
-      // const match=
       arrOfClrs.map((ele) => {
         if (ele == strname) {
+          // debugger;
+          // console.log(strname)
           setPutClr([...putClr, strname]);
+          // console.log(putClr)
+          setColor(strname);
           setInpClr("");
         }
       });
     }
-
-    // console.log(match)
-
-    // if (arrOfClrs.map((ele)=>{ele==inp}))
   };
   const swapOnClick = (finalIndex) => {
-    const clrList = [...putClr];
-    [clrList[clrList.length - 1], clrList[finalIndex]] = [
-      clrList[finalIndex],
-      clrList[clrList.length - 1],
-    ];
-    setPutClr(clrList);
+    const clickedClrs = [...putClr];
+    setColor(clickedClrs.splice(finalIndex, 1));
   };
-  // const getBack=(str)=>{(str)};
-  const styleChange = { background: `${putClr[putClr.length - 1]} ` };
+
+  const styleChange = { background: `${color}` };
   return (
     <>
       <InputClr empMsg={inpClr} clrNameHandler={clrNameHandler} />
