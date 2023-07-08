@@ -1,7 +1,7 @@
 const AppHeader=()=>{
 return (
   <header>
-    <h1 style={{ color: "white" }}>Color Picker</h1>
+    <h1 style={{ color: "white", textAlign:"center",  fontFamily: 'cursive' }}>Color Picker</h1>
   </header>
 );
 }
