@@ -1,9 +1,8 @@
- import { useState } from "react";
+import { useState } from "react";
 import InputClr from "../InputClr/InputClr";
 import Button from "../Button/Button";
 import styles from "./Display.module.css";
 import ClrBtns from "../ClrBtns/ClrBtns";
-
 
 const Display = () => {
   const [inpClr, setInpClr] = useState("");
@@ -197,28 +196,26 @@ const Display = () => {
   };
 
   const styleChange = { background: `${color}` };
-  const enterKeyHandler=(e)=>{
+  const enterKeyHandler = (e) => {
     // console.log(e.key)
-    if (e.key=="Enter"){
+    if (e.key == "Enter") {
       // console.log('pressed')
       btnClickHandler();
     }
-  }
-  
+  };
+
   return (
     <>
-    
       <InputClr
         empMsg={inpClr}
         clrNameHandler={clrNameHandler}
         enterHandler={enterKeyHandler}
       />
-      <Button btnClicked={btnClickHandler} isDisabled={inpClr.length===0} />
+      <Button btnClicked={btnClickHandler} isDisabled={inpClr.length === 0} />
       <div className={styles.container}>
         <div className={styles.displayBox} style={styleChange}></div>
       </div>
       <ClrBtns putClr={putClr} swapOnClick={swapOnClick} />
- 
     </>
   );
 };
