@@ -3,8 +3,7 @@ import InputClr from "../InputClr/InputClr";
 import Button from "../Button/Button";
 import styles from "./Display.module.css";
 import ClrBtns from "../ClrBtns/ClrBtns";
-import AppHeader from "../AppHeader/AppHeader";
-import AppFooter from "../AppFooter/AppFooter";
+
 
 const Display = () => {
   const [inpClr, setInpClr] = useState("");
@@ -208,7 +207,7 @@ const Display = () => {
   
   return (
     <>
-      <AppHeader />
+    
       <InputClr
         empMsg={inpClr}
         clrNameHandler={clrNameHandler}
@@ -219,7 +218,7 @@ const Display = () => {
         <div className={styles.displayBox} style={styleChange}></div>
       </div>
       <ClrBtns putClr={putClr} swapOnClick={swapOnClick} />
-      <AppFooter styles={{ color: "purple" }} />
+ 
     </>
   );
 };
