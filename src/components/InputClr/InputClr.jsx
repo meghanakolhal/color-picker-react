@@ -1,6 +1,6 @@
 import styles from "./InputClr.module.css";
 // eslint-disable-next-line react/prop-types
-const InputClr = ({ clrNameHandler, empMsg }) => {
+const InputClr = ({ clrNameHandler, empMsg,enterHandler }) => {
   const clrName = (e) => {
     // console.log(e.target.value.split(' ').join(''));
     clrNameHandler(e.target.value);
@@ -14,6 +14,7 @@ const InputClr = ({ clrNameHandler, empMsg }) => {
         value={empMsg}
         className={styles.inp}
         onChange={clrName}
+        onKeyUp={enterHandler}
       />
     </>
   );

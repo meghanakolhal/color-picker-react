@@ -3,11 +3,13 @@ import InputClr from "../InputClr/InputClr";
 import Button from "../Button/Button";
 import styles from "./Display.module.css";
 import ClrBtns from "../ClrBtns/ClrBtns";
+import AppHeader from "../AppHeader/AppHeader";
+import AppFooter from "../AppFooter/AppFooter";
 
 const Display = () => {
   const [inpClr, setInpClr] = useState("");
-  const [putClr, setPutClr] = useState(["red", "brown", "yellow", ""]);
-  const [color, setColor] = useState("");
+  const [putClr, setPutClr] = useState(["red", "brown", "yellow", "maroon"]);
+  const [color, setColor] = useState("lightcyan");
   const arrOfClrs = [
     "black",
     "silver",
@@ -196,14 +198,28 @@ const Display = () => {
   };
 
   const styleChange = { background: `${color}` };
+  const enterKeyHandler=(e)=>{
+    // console.log(e.key)
+    if (e.key=="Enter"){
+      // console.log('pressed')
+      btnClickHandler();
+    }
+  }
+  
   return (
     <>
-      <InputClr empMsg={inpClr} clrNameHandler={clrNameHandler} />
-      <Button btnClicked={btnClickHandler} />
+      <AppHeader />
+      <InputClr
+        empMsg={inpClr}
+        clrNameHandler={clrNameHandler}
+        enterHandler={enterKeyHandler}
+      />
+      <Button btnClicked={btnClickHandler} isDisabled={inpClr.length===0} />
       <div className={styles.container}>
         <div className={styles.displayBox} style={styleChange}></div>
       </div>
       <ClrBtns putClr={putClr} swapOnClick={swapOnClick} />
+      <AppFooter styles={{ color: "purple" }} />
     </>
   );
 };
